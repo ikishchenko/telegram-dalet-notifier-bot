@@ -24,6 +24,9 @@ namespace TelegramDaletNotificationBot {
             client = new TelegramBotClient(token);
             client.OnMessage += OnMessage;
             client.StartReceiving();
+            client.OnReceiveError += (s, args) => {
+                Console.WriteLine($"TELEGRAM INTERNAL ERROR: {Environment.NewLine}{args.ApiRequestException.ToString()}");
+            };
         }       
 
         private void ListetingLoop() {
