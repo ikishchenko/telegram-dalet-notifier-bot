@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using CommandLine;
 
 namespace TelegramDaletNotificationBot {
@@ -27,18 +28,9 @@ namespace TelegramDaletNotificationBot {
             outputQueue.OnNotification += telegramBot.OnNotification;
 
             Console.WriteLine("Telegram bot handler for Dalet notifications running.");
-            Console.WriteLine("Use '/shutdown' command for stop server.");
             while (true) {
-                var command = Console.ReadLine();
-                if (command == "/shutdown") {
-                    break;
-                }
-                Console.WriteLine("Invalid command.");
+                Thread.Sleep(1000);
             }
-
-            outputQueue.Dispose();
-            inputQueue.Dispose();
-            telegramBot.Dispose();
         }
 
         static void HandleParseError(IEnumerable<Error> errors) { }
