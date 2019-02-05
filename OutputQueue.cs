@@ -19,7 +19,7 @@ namespace TelegramDaletNotificationBot {
             conFactory = new ConnectionFactory() { Uri = new Uri(connectionString) };
             connection = conFactory.CreateConnection();
             channel = connection.CreateModel();
-            channel.ExchangeDeclare(exchange: EXCHANGE_NAME, type: "direct", durable: true);
+            //channel.ExchangeDeclare(exchange: EXCHANGE_NAME, type: "direct", durable: true);
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += Receive;
